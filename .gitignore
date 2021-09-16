@@ -1,0 +1,95 @@
+# Hidden files
+.*
+._*
+!.htaccess
+/.htaccess
+!.gitignore
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Adobe files to ignore
+*.psd
+*.ai
+
+# Logs
+*.log
+
+# Compiled source
+*.dll
+*.exe
+*.o
+*.so
+
+# OS generated files
+*.lock
+*.DS_Store
+*.bak
+*.swp
+*.out
+ehthumbs.db
+Thumbs.db
+
+#Excel File
+*.xlsx
+*.xls
+
+#PDF File
+#*.pdf
+
+# CakePHP specific files #
+##########################
+tmp/
+logs/*
+southam/*
+config/app.php
+config/bootstrap.php
+config/paths.php
+config/app_local.php
+config/Domains
+webroot/img/uploads
+webroot/uploads
+webroot/usvirtualasset
+node_modules
+plugins/YearBook/config/bootstrap.php
+src/Template/Email/html/brandman
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+#Icon?
+ehthumbs.db
+Thumbs.db
+
+# Tool specific files #
+#######################
+# vim
+*~
+*.swp
+*.swo
+# sublime text & textmate
+*.sublime-*
+*.stTheme.cache
+*.tmlanguage.cache
+*.tmPreferences.cache
+# Eclipse
+.settings/*
+# JetBrains, aka PHPStorm, IntelliJ IDEA
+.idea/*
+# NetBeans
+nbproject/*
+# Visual Studio Code
+.vscode
+# Sass preprocessor
+.sass-cache/

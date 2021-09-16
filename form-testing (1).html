@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://draggable.github.io/formeo/assets/css/formeo.min.css">
+    <style>
+        /*body {*/
+        /*    background: radial-gradient(circle, #484848, #2F3031);*/
+        /*}*/
+    </style>
+
+</head>
+<body>
+
+<button type="button" id="btn-clck" class="btn-icon-round ">
+    Hello
+</button>
+<div id="formeo-editor"></div>
+
+<div id="formeo-editor-render"></div>
+
+<br>
+<h2>Helllo</h2>
+<div id="formeo-editor-2"></div>
+
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script src="https://draggable.github.io/formeo/assets/js/formeo.min.js"></script>
+<script>
+
+    const controlOptions = {
+        disable: {
+            formActions: true, // cancel and save buttons will not be shown
+            // formActions: ['clearBtn'], // only the clear button will be disabled
+        },
+    }
+
+    const formeoOptions = {
+        controls: controlOptions,
+    }
+    console.log(formeoOptions);
+
+    disable: {
+        groups: ['html', 'layout']
+    }
+
+    var formeo = new FormeoEditor({
+        editorContainer: '#formeo-editor',
+        controls: {
+            elementOrder : {
+                html: ['divider', 'header', 'paragraph'],
+            },
+            config: {
+                html: 'header'
+            },
+            disable: {
+                //formActions: true, // cancel and save buttons will not be shown
+                // formActions: ['clearBtn'], // only the clear button will be disabled
+            },
+
+
+        },
+    });
+
+
+
+    const renderer = new FormeoRenderer({
+        renderContainer: '#formeo-editor-render',
+    });
+
+    $('#btn-clck').on('click', function (e) {
+        alert('hello');
+        var fdata = formeo.json;
+        console.log(fdata);
+
+        renderer.render(JSON.parse(fdata));
+
+        console.log(fdata);
+
+        var options = {
+            editorContainer: '#formeo-editor-2',
+            formData: JSON.parse(fdata)
+        }
+
+        console.log(JSON.stringify(fdata));
+        var formeo2 = new FormeoEditor(options);
+
+    })
+
+    //FormeoEditor#json
+    $('.save-form').on('click', function () {
+        console.log('fdf');
+        alert('hhh');
+    })
+
+    var data = formeo.onSave;
+    console.log(data);
+
+</script>
+
+
