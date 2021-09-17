@@ -44,7 +44,12 @@ jQuery(document).ready(function ($) {
         console.log(JSON.parse(form_data));
         renderer.render(JSON.parse(form_data));
         setTimeout(function () {
-            $("#test_form").validate();
+            $("#test_form").validate({
+                submitHandler: function(form) {
+                    return false;
+                    //$(form).submit();
+                }
+            });
         }, 1000);
 
         //console.log(fdata);
