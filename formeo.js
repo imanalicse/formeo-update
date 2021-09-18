@@ -167,7 +167,7 @@
 							var d = t.options;
 							if (d = g.processOptions(d, t, e), !g.holdsContent(c) || "button" === i) return b.b.forEach(d, function(t) {
 								s.children.push(o.create(t, e))
-							}), t.attrs.className && (s.className = t.attrs.className), s.config = Object.assign({}, t.config), g.create(s, e);
+							}), t.attrs.className && (s.className = t.attrs.className), s.config = Object.assign({}, t.config), s.attrs.required = t.attrs.required, /* checkbox, radio required by webalive */ g.create(s, e);
 							l.array.call(g, d), delete t.content, a.push("options")
 						}
 						if (t.attrs && (o.processAttrs(t, c, e), a.push("attrs")), t.config) {
