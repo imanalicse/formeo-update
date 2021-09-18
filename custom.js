@@ -41,8 +41,9 @@ jQuery(document).ready(function ($) {
 
     $('#btn-clck').on('click', function (e) {
         var form_data = formeo.json;
-        console.log(JSON.parse(form_data));
-        renderer.render(JSON.parse(form_data));
+        form_data = JSON.parse(form_data);
+        console.log(form_data);
+        renderer.render(form_data);
         setTimeout(function () {
             $("#test_form").validate({
                 submitHandler: function(form) {
