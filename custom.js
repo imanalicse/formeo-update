@@ -1,18 +1,23 @@
-function formeoGroupValidation($selector) {
-        var radio = $selector.find(".f-field-group[required='true'] input[type='radio']").last();
-        if (radio.length > 0) {
-            console.log('radio = ', radio);
-            radio.rules('add', {
-                required: true
-            });
-        }
-        var checkbox = $selector.find(".f-field-group[required='true'] input[type='checkbox']").last();
-        if(checkbox.length > 0) {
-            console.log('checkbox = ', checkbox);
-            checkbox.rules('add', {
-                required: true
-            });
-        }
+function formeoRadioCheckboxValidation($selector) {
+
+        $selector.find(".f-field-group[required='true']").each(function (index, element) {
+            var $element = $(element);
+            var radio = $element.find("input[type='radio']").last();
+            if (radio.length > 0) {
+                console.log('radio = ', radio);
+                radio.rules('add', {
+                    required: true
+                });
+            }
+
+            var checkbox = $element.find("input[type='checkbox']").last();
+            if(checkbox.length > 0) {
+                console.log('checkbox = ', checkbox);
+                checkbox.rules('add', {
+                    required: true
+                });
+            }
+        });
     }
 
 jQuery(document).ready(function ($) {
@@ -76,11 +81,12 @@ jQuery(document).ready(function ($) {
                     }
 				},
                 submitHandler: function(form) {
-                    //$(form).submit();
                     console.log("submitted");
+                    //$(form).submit();
+                    return false;
                 }
             });
-            formeoGroupValidation($form_selector);
+            formeoRadioCheckboxValidation($form_selector);
         }, 1000);
 
         //console.log(fdata);
