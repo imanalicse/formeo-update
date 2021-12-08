@@ -55,6 +55,23 @@ jQuery(document).ready(function ($) {
         },
     });
 
+  $.fn.serializeFiles = function() {
+    var form = $(this),
+        formData = new FormData()
+        formParams = form.serializeArray();
+
+        $.each(form.find('input[type="file"]'), function(i, tag) {
+          $.each($(tag)[0].files, function(i, file) {
+            formData.append(tag.name, file);
+          });
+        });
+
+        $.each(formParams, function(i, val) {
+          formData.append(val.name, val.value);
+        });
+
+    return formData;
+  };
 
 
     const renderer = new FormeoRenderer({
@@ -82,7 +99,40 @@ jQuery(document).ready(function ($) {
 				},
                 submitHandler: function(form) {
                     console.log("submitted");
+                    $form = $(form);
                     //$(form).submit();
+                    console.log('$form', $form);
+                    let myForm = document.getElementById('test_form');
+                    let test_form2 = document.getElementById('test_form2');
+                    //var formData = $("#test_form").serializeFiles();
+                    var formData = new FormData(myForm);
+                    console.log('formData', formData.entries());
+                    var customFormData = {};
+                    for (var d of formData) {
+                        console.log(d);
+                        customFormData[d[0]] = d[1];
+                    }
+                    console.log('customFormData', customFormData);
+                    var test_form2FormData = new FormData(test_form2);
+                    console.log('test_form2FormData', formData.entries());
+                    for (var d of test_form2FormData) {
+                        console.log(d);
+                    }
+
+                    $.ajax({
+                        url: "http://localhost/test/formeo-update/form_submit.php",
+                        method:"POST",
+                        data: {
+                            'aaa': customFormData
+                        },
+                        contentType: 'multipart/form-data',
+                        cache : false,
+                        //processData: false,
+                        success:function(res) {
+                            console.log('res', res);
+                        }
+
+                    });
                     return false;
                 }
             });
