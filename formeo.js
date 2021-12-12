@@ -7831,7 +7831,21 @@
 						}
 					}), m(this, "getComponent", function(t) {
 						var e = t.slice(t.indexOf(".") + 1);
-						return Object(h.f)(t) ? l.external[e] : l.renderedForm.querySelector("#f-" + e)
+						//return Object(h.f)(t) ? l.external[e] : l.renderedForm.querySelector("#f-" + e)
+
+						//WebAlive changes: conditional field display issue fixed
+						if (Object(h.f)(t)) {
+							return l.external[e];
+						}
+						var comp = l.renderedForm.querySelector("#f-" + e);
+						if (!comp) {
+							var newComp = l.renderedForm.querySelector("#f-" + e + '-0');
+							if (newComp) {
+								newComp = newComp.parentElement.parentElement;
+							}
+							comp = newComp;
+						}
+						return comp;
 					}), m(this, "getComponents", function(t) {
 						var e = [],
 							n = t.slice(t.indexOf(".") + 1);
