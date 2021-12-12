@@ -6914,7 +6914,7 @@
 								var e = t.target,
 									n = e.closest(".f-condition-row"),
 									r = new RegExp(e.className + "(?:\\S?)+", "gm");
-								n.className = n.className.replace(r, ""), n.classList.add([e.className, e.value].filter(Boolean).join("-"));
+								n.className = n.className.replace(r, ""), n.classList.add([e.className, /\s/.test(e.value) ? '': e.value].filter(Boolean).join("-")); //Webalive change
 								var o = {
 									dataPath: s,
 									value: e.value,
